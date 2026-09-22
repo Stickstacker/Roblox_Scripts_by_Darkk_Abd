@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darkk Abdullah | Cyber Roblox Script Hub ⚡</title>
+    <title>Darkk Abdullah | Roblox Hub ⚡</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --bg-color: #03050d;
-            --card-bg: rgba(8, 14, 28, 0.88);
-            --hacker-green: #00ff66;
-            --neon-cyan: #00e5ff;
-            --neon-gold: #ffcc00;
-            --alert-red: #ff0055;
-            --text-color: #ffffff;
-            --text-dim: #90a0b8;
+            --bg-color: #0b0e14;
+            --card-bg: #121824;
+            --accent-green: #00e676;
+            --accent-cyan: #00b0ff;
+            --accent-gold: #ffd600;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
         }
 
         * {
@@ -30,234 +30,200 @@
 
         body {
             background-color: var(--bg-color);
-            color: var(--text-color);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Hacker Interactive Canvas */
-        #hacker-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            padding: 20px 10px;
         }
 
         .container {
-            width: 92%;
-            max-width: 850px;
-            margin: 20px auto;
+            width: 100%;
+            max-width: 750px;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            z-index: 1;
         }
 
-        /* Hacker Header Banner */
-        .hacker-banner {
-            background: rgba(0, 255, 102, 0.04);
-            border: 1px solid var(--hacker-green);
+        /* Header Banner */
+        .header-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
             border-radius: 14px;
-            padding: 22px;
+            padding: 24px;
             text-align: center;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.15);
-            position: relative;
-            overflow: hidden;
         }
 
-        .hacker-banner h1 {
+        .header-card h1 {
             font-family: 'Fira Code', monospace;
-            font-size: 1.8rem;
-            color: var(--hacker-green);
-            text-shadow: 0 0 12px var(--hacker-green);
+            font-size: 1.6rem;
+            color: var(--accent-green);
             margin-bottom: 6px;
         }
 
-        .hacker-banner p {
-            color: var(--text-dim);
+        .header-card p {
+            color: var(--text-muted);
             font-size: 0.9rem;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
-        /* Giveaway Box Card */
-        .giveaway-card {
-            background: linear-gradient(135deg, rgba(255, 204, 0, 0.12), rgba(0, 229, 255, 0.12));
-            border: 2px solid var(--neon-gold);
+        /* Giveaway Box */
+        .giveaway-box {
+            background: rgba(255, 214, 0, 0.03);
+            border: 1px solid rgba(255, 214, 0, 0.3);
             border-radius: 12px;
-            padding: 18px;
-            margin-bottom: 18px;
-            box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+            padding: 20px;
+            margin-bottom: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .giveaway-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--neon-gold);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
             text-transform: uppercase;
-            text-shadow: 0 0 8px var(--neon-gold);
         }
 
-        .giveaway-desc {
+        .giveaway-notice {
             font-size: 0.88rem;
             color: #fff;
             text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .counter-box {
-            background: #000;
-            border: 1px solid var(--neon-cyan);
+        .counter-badge {
+            background: #070a0f;
+            border: 1px solid var(--border-color);
             padding: 8px 18px;
             border-radius: 30px;
             font-family: 'Fira Code', monospace;
-            font-size: 0.95rem;
-            color: var(--neon-cyan);
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
-            margin: 5px 0;
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
         }
 
-        .social-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .btn-social {
-            display: flex;
+        /* Buttons */
+        .btn-action {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 12px 22px;
+            padding: 11px 22px;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.88rem;
-            transition: all 0.3s ease;
-            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
+            transition: 0.2s ease;
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            border: none;
         }
 
         .btn-tiktok {
-            background: #000;
+            background: #1e293b;
             color: #fff;
-            border: 1px solid var(--alert-red);
-            box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+            border: 1px solid #334155;
+        }
+
+        .btn-tiktok:hover {
+            background: #334155;
         }
 
         .btn-roblox {
-            background: #0a0d18;
-            color: var(--neon-cyan);
-            border: 1px solid var(--neon-cyan);
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 176, 255, 0.4);
         }
 
-        .btn-social:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 18px currentColor;
+        .btn-roblox:hover {
+            background: rgba(0, 176, 255, 0.1);
         }
 
-        .roblox-fallback {
-            margin-top: 14px;
-            font-size: 0.78rem;
-            color: var(--neon-cyan);
-            background: rgba(0, 229, 255, 0.08);
-            padding: 8px 14px;
-            border-radius: 6px;
-            border: 1px dashed rgba(0, 229, 255, 0.35);
-            display: inline-block;
+        .roblox-note {
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
-        /* Section Header */
-        .section-hdr {
+        /* Section Title */
+        .section-title {
             font-family: 'Fira Code', monospace;
-            font-size: 1.2rem;
-            color: var(--hacker-green);
+            font-size: 1.1rem;
+            color: var(--accent-green);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             margin-top: 10px;
         }
 
         /* Script Grid */
-        .script-grid {
+        .script-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
-        .script-card {
+        .script-item {
             background: var(--card-bg);
-            border: 1px solid rgba(0, 255, 102, 0.25);
-            border-radius: 12px;
-            padding: 18px;
-            backdrop-filter: blur(12px);
-            transition: 0.3s;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 16px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 15px;
         }
 
-        .script-card:hover {
-            border-color: var(--hacker-green);
-            box-shadow: 0 0 20px rgba(0, 255, 102, 0.25);
+        .script-item:hover {
+            border-color: rgba(0, 230, 118, 0.4);
         }
 
         .script-info h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #fff;
-            margin-bottom: 4px;
             font-family: 'Fira Code', monospace;
+            margin-bottom: 4px;
         }
 
         .script-info p {
-            font-size: 0.85rem;
-            color: var(--text-dim);
+            font-size: 0.82rem;
+            color: var(--text-muted);
         }
 
         .btn-open {
             background: transparent;
-            color: var(--hacker-green);
-            border: 1px solid var(--hacker-green);
-            padding: 10px 22px;
-            border-radius: 8px;
-            font-weight: 700;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
             cursor: pointer;
             font-family: 'Fira Code', monospace;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.3s;
             white-space: nowrap;
+            transition: 0.2s;
         }
 
         .btn-open:hover {
-            background: var(--hacker-green);
+            background: var(--accent-green);
             color: #000;
-            box-shadow: 0 0 15px var(--hacker-green);
         }
 
-        /* Fullscreen Pro Modal Page */
+        /* Modal Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(3, 5, 12, 0.95);
-            backdrop-filter: blur(15px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
             z-index: 1000;
             display: none;
             justify-content: center;
@@ -266,310 +232,180 @@
         }
 
         .modal-box {
-            background: #080d1a;
-            border: 2px solid var(--hacker-green);
-            box-shadow: 0 0 35px rgba(0, 255, 102, 0.3);
-            border-radius: 14px;
+            background: var(--card-bg);
+            border: 1px solid var(--accent-green);
+            border-radius: 12px;
             width: 100%;
-            max-width: 600px;
-            padding: 25px;
+            max-width: 550px;
+            padding: 22px;
             position: relative;
-            animation: modalIn 0.3s ease;
-        }
-
-        @keyframes modalIn {
-            from { transform: scale(0.85); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
 
         .modal-close {
             position: absolute;
             top: 15px;
             right: 15px;
-            color: var(--alert-red);
-            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1.3rem;
             cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #fff;
         }
 
         .modal-title {
             font-family: 'Fira Code', monospace;
-            color: var(--hacker-green);
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+            color: var(--accent-green);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
         }
 
         .code-box {
-            background: #02040a;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: #070a0f;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 15px;
-            color: var(--neon-cyan);
+            padding: 12px;
+            color: var(--accent-cyan);
             font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             word-break: break-all;
             margin: 15px 0;
-            max-height: 150px;
+            max-height: 140px;
             overflow-y: auto;
         }
 
-        .btn-copy-main {
+        .btn-copy {
             width: 100%;
-            background: var(--hacker-green);
+            background: var(--accent-green);
             color: #000;
             border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: bold;
+            padding: 11px;
+            border-radius: 6px;
+            font-weight: 700;
             font-family: 'Fira Code', monospace;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
-
-        .btn-copy-main:hover {
-            box-shadow: 0 0 20px var(--hacker-green);
-        }
-
-        /* Multilingual AI Chatbot */
-        #chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 99;
-        }
-
-        .chat-toggle {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            background: #000;
-            color: var(--hacker-green);
-            border: 2px solid var(--hacker-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            cursor: pointer;
-            box-shadow: 0 0 18px var(--hacker-green);
-        }
-
-        .chat-window {
-            display: none;
-            position: absolute;
-            bottom: 70px;
-            right: 0;
-            width: 320px;
-            height: 400px;
-            background: #080d1a;
-            border: 1px solid var(--hacker-green);
-            border-radius: 12px;
-            box-shadow: 0 0 25px rgba(0, 255, 102, 0.3);
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .chat-header {
-            background: rgba(0, 255, 102, 0.1);
-            padding: 12px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            color: var(--hacker-green);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 255, 102, 0.2);
-        }
-
-        .chat-messages {
-            flex: 1;
-            padding: 12px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            font-size: 0.85rem;
-        }
-
-        .msg-ai {
-            background: rgba(0, 255, 102, 0.08);
-            border: 1px solid rgba(0, 255, 102, 0.2);
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            align-self: flex-start;
-            max-width: 85%;
-        }
-
-        .msg-user {
-            background: var(--hacker-green);
-            color: #000;
-            padding: 8px 12px;
-            border-radius: 8px;
-            align-self: flex-end;
-            max-width: 85%;
-            font-weight: 600;
-        }
-
-        .chat-input-area {
-            display: flex;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .chat-input-area input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            padding: 10px;
-            color: #fff;
-            outline: none;
-        }
-
-        .chat-input-area button {
-            background: var(--hacker-green);
-            border: none;
-            padding: 0 15px;
-            cursor: pointer;
-            color: #000;
-            font-weight: bold;
+            gap: 8px;
+            transition: 0.2s;
         }
 
         @media (max-width: 600px) {
-            .script-card { flex-direction: column; align-items: flex-start; }
-            .btn-open { width: 100%; justify-content: center; }
+            .script-item { flex-direction: column; align-items: flex-start; }
+            .btn-open { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="hacker-canvas"></canvas>
-
     <div class="container">
         
-        <!-- Header / Banner -->
-        <div class="hacker-banner">
-            <h1>[ DARKK ABDULLAH HUB ] 🔥</h1>
-            <p>Exclusive Keyless Roblox Scripts & Huge Giveaways! ⚡</p>
+        <!-- Header -->
+        <div class="header-card">
+            <h1>[ DARKK ABDULLAH HUB ] ⚡</h1>
+            <p>Exclusive Keyless Roblox Scripts & Giveaways 🚀</p>
 
-            <!-- Giveaway Card Box -->
-            <div class="giveaway-card">
-                <div class="giveaway-title">🎁 11,000 ROBUX MEGA GIVEAWAY! 🎁</div>
-                <div class="giveaway-desc">Aap bhi participate karein! Simply follow on TikTok to join the 11k Robux pool! 🚀</div>
-                <div class="counter-box">
-                    👥 Participated Users: <strong id="part-count">34,738</strong>
+            <!-- Giveaway Card -->
+            <div class="giveaway-box">
+                <div class="giveaway-title">🎁 11,000 ROBUX GIVEAWAY! 🎁</div>
+                <div class="giveaway-notice">
+                    🎯 <strong>Randomly 10 participants select kiye jayenge!</strong>
                 </div>
-                <div class="social-row">
-                    <button class="btn-social btn-tiktok" id="follow-btn" onclick="handleParticipate()">
-                        <i class="fa-brands fa-tiktok"></i> <span id="follow-btn-text">Follow & Participate! 🎯</span>
-                    </button>
+                <div class="counter-badge">
+                    👥 Participated: <strong id="part-count">273</strong>
                 </div>
+                <button class="btn-action btn-tiktok" id="follow-btn" onclick="handleParticipate()">
+                    <i class="fa-brands fa-tiktok"></i> <span id="follow-btn-text">Follow & Participate! 🎯</span>
+                </button>
             </div>
 
             <!-- Social Links -->
-            <div class="social-row">
-                <a href="https://www.roblox.com" target="_blank" class="btn-social btn-roblox">
+            <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                <a href="https://www.roblox.com" target="_blank" class="btn-action btn-roblox">
                     <i class="fa-solid fa-gamepad"></i> Roblox Profile 🎮
                 </a>
             </div>
 
-            <div class="roblox-fallback">
-                <i class="fa-solid fa-circle-info"></i> Notice: If link glitches, search <strong>"Darkk Abdullah"</strong> on Roblox & follow for updates! ⚡
+            <div class="roblox-note">
+                <i class="fa-solid fa-circle-info"></i> Notice: If link doesn't work, search <strong>"Darkk Abdullah"</strong> on Roblox! ⚡
             </div>
         </div>
 
-        <!-- Script List Title -->
-        <div class="section-hdr">
-            <i class="fa-solid fa-terminal"></i>
+        <!-- Script Section Header -->
+        <div class="section-title">
+            <i class="fa-solid fa-code"></i>
             <span>AVAILABLE SCRIPTS 📜</span>
         </div>
 
-        <!-- Scripts Container -->
-        <div class="script-grid" id="scripts-list">
-            <!-- Dynamic Scripts Load Here -->
+        <!-- Scripts Grid -->
+        <div class="script-list" id="scripts-list">
+            <!-- 5 Empty Slots Loaded via JS -->
         </div>
 
     </div>
 
-    <!-- Script Open Page Modal -->
+    <!-- Script Modal -->
     <div class="modal-overlay" id="script-modal">
         <div class="modal-box">
             <i class="fa-solid fa-xmark modal-close" onclick="closeModal()"></i>
             <div class="modal-title" id="modal-title">Script Title</div>
-            <p style="color: var(--text-dim); font-size: 0.9rem;" id="modal-desc">Description</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem;" id="modal-desc">Description</p>
             
             <div class="code-box" id="modal-code">loadstring(...)()</div>
 
-            <button class="btn-copy-main" id="copy-btn" onclick="copyCurrentScript()">
+            <button class="btn-copy" id="copy-btn" onclick="copyCurrentScript()">
                 <i class="fa-regular fa-copy"></i> COPY SCRIPT ⚡
             </button>
         </div>
     </div>
 
-    <!-- Darkk.AI Chatbot -->
-    <div id="chatbot-container">
-        <button class="chat-toggle" onclick="toggleChat()"><i class="fa-solid fa-user-ninja"></i></button>
-        <div class="chat-window" id="chat-window">
-            <div class="chat-header">
-                <span>🤖 Darkk.AI Multilingual</span>
-                <i class="fa-solid fa-xmark" style="cursor: pointer;" onclick="toggleChat()"></i>
-            </div>
-            <div class="chat-messages" id="chat-msgs">
-                <div class="msg-ai">Hello! Main Darkk.AI hun. Scripts copy karne ya 11k Robux giveaway me help chahiye? Ask in Urdu, Hindi or English! 💬</div>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Type message..." onkeydown="if(event.key==='Enter') sendMsg()">
-                <button onclick="sendMsg()"><i class="fa-solid fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-
     <script>
         // ==========================================
-        // 5 EMPTY SCRIPT SLOTS FOR YOU TO EDIT LATER
+        // 5 SCRIPT SLOTS (Edit title, desc & code here)
         // ==========================================
         const SCRIPTS_DATA = [
             {
                 title: "Empty Script Slot #1 📜",
                 desc: "Script code is currently empty. Add your loadstring here.",
-                code: 'print("Script Slot 1 is currently empty.")'
+                code: 'print("Script Slot 1 is empty.")'
             },
             {
                 title: "Empty Script Slot #2 📜",
                 desc: "Script code is currently empty. Add your loadstring here.",
-                code: 'print("Script Slot 2 is currently empty.")'
+                code: 'print("Script Slot 2 is empty.")'
             },
             {
                 title: "Empty Script Slot #3 📜",
                 desc: "Script code is currently empty. Add your loadstring here.",
-                code: 'print("Script Slot 3 is currently empty.")'
+                code: 'print("Script Slot 3 is empty.")'
             },
             {
                 title: "Empty Script Slot #4 📜",
                 desc: "Script code is currently empty. Add your loadstring here.",
-                code: 'print("Script Slot 4 is currently empty.")'
+                code: 'print("Script Slot 4 is empty.")'
             },
             {
                 title: "Empty Script Slot #5 📜",
                 desc: "Script code is currently empty. Add your loadstring here.",
-                code: 'print("Script Slot 5 is currently empty.")'
+                code: 'print("Script Slot 5 is empty.")'
             }
         ];
 
         let activeScriptCode = "";
-        let countValue = 34738;
+        let countValue = 273;
         let isParticipated = false;
 
-        // Participate Function
+        // Handle Participate Click
         function handleParticipate() {
             window.open('https://www.tiktok.com/@darkk_abd', '_blank');
             if(!isParticipated) {
                 countValue++;
-                document.getElementById('part-count').innerText = countValue.toLocaleString();
+                document.getElementById('part-count').innerText = countValue;
                 document.getElementById('follow-btn-text').innerText = "✅ Participated!";
-                document.getElementById('follow-btn').style.borderColor = "#00ff66";
+                document.getElementById('follow-btn').style.borderColor = "var(--accent-green)";
                 isParticipated = true;
             }
         }
@@ -578,7 +414,7 @@
         const container = document.getElementById('scripts-list');
         SCRIPTS_DATA.forEach((s) => {
             const card = document.createElement('div');
-            card.className = 'script-card';
+            card.className = 'script-item';
             card.innerHTML = `
                 <div class="script-info">
                     <h3>${s.title}</h3>
@@ -591,7 +427,7 @@
             container.appendChild(card);
         });
 
-        // Modal Logic
+        // Modal Controls
         function openScriptPage(title, desc, code) {
             document.getElementById('modal-title').innerText = title;
             document.getElementById('modal-desc').innerText = desc;
@@ -600,7 +436,7 @@
 
             const copyBtn = document.getElementById('copy-btn');
             copyBtn.innerHTML = `<i class="fa-regular fa-copy"></i> COPY SCRIPT ⚡`;
-            copyBtn.style.background = 'var(--hacker-green)';
+            copyBtn.style.background = 'var(--accent-green)';
 
             document.getElementById('script-modal').style.display = 'flex';
         }
@@ -613,10 +449,9 @@
             navigator.clipboard.writeText(activeScriptCode);
             const copyBtn = document.getElementById('copy-btn');
             copyBtn.innerHTML = `<i class="fa-solid fa-check"></i> COPIED! ⚡`;
-            copyBtn.style.background = '#00e5ff';
+            copyBtn.style.background = 'var(--accent-cyan)';
         }
+    </script>
+</body>
+            </html>
 
-        // Chatbot Functionality (Multilingual)
-        function toggleChat() {
-            const win = document.getElementById('chat-window');
-     
